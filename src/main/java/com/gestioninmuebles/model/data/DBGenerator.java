@@ -13,9 +13,9 @@ public class DBGenerator {
         DSLContext create = DSL.using(connection);
         crearBaseDato(create, nombreBD);
         create = actualizarConexion(connection, nombreBD);
-        crearTablaLibro(create);
-        crearTablaCategoria(create);
-        relacionarTabla(create, "Inmueble", "codigoCategoria", "Categoria");
+        crearTablaInmueble(create);
+        crearTablaVendedor(create);
+        relacionarTabla(create, "Inmueble", "rut", "Vendedor");
         DBConnector.closeConnection();
     }
 
@@ -40,21 +40,23 @@ public class DBGenerator {
     }
 
     //Método estandar para crear una tabla
-    private static void crearTablaLibro(DSLContext create) {
-        create.createTableIfNotExists("Inmueble").column("codigoLibro", VARCHAR(30))
-                .column("nombre", VARCHAR(100))
-                .column("editorial", VARCHAR(70))
-                .column("codigoCategoria", VARCHAR(100))
-                .column("anio", INTEGER)
-                .column("tipoLibro", VARCHAR(70))
-                .constraint(primaryKey("codigoLibro")).execute();
+    private static void crearTablaInmueble(DSLContext create) {
+        create.createTableIfNotExists("Inmueble").column("codigoInmueble", VARCHAR(30))
+                .column("tipoConstruccion", VARCHAR(100))
+                .column("ciudad", VARCHAR(70))
+                .column("direccion", VARCHAR(100))
+                .column("precio", INTEGER)
+                .constraint(primaryKey("codigoInmueble")).execute();
     }
 
     //Método estandar para crear una tabla
-    private static void crearTablaCategoria(DSLContext create) {
-        create.createTableIfNotExists("Categoria").column("codigoCategoria", VARCHAR(50))
-                .column("nombre", VARCHAR(100))
-                .constraint(primaryKey("codigoCategoria")).execute();
+    private static void crearTablaVendedor(DSLContext create) {
+        create.createTableIfNotExists("Vendedor").column("rut", VARCHAR(12))
+                .column("nombre", VARCHAR(70))
+                .column("direccion", VARCHAR(100))
+                .column("tituloProfesional", VARCHAR(70))
+                .column("estadoCivil", VARCHAR(50))
+                .constraint(primaryKey("rut")).execute();
     }
 
     //Relaciona dos tablas a traves de una clave foranea
