@@ -1,0 +1,41 @@
+body{
+    background-color: lightgray;
+    background-size: cover;
+    background-repeat: no-repeat;
+
+}
+.container{
+    align-content: center;
+    align-items: center;
+}
+.centrado{
+    text-align: center;
+    align-content: center;
+}
+.encabezado{
+    color: midnightblue;
+    text-align: center;
+    text-decoration: none;
+    font-size: 40px;
+}
+.boton{
+    background-color: deepskyblue;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 20px;
+    border-radius: 10px;
+}
+label{
+    color: midnightblue;
+    text-decoration: none;
+    font-size: 20px;
+    padding: 15px 32px;
+}
+.campoTexto{
+    width: 200px;
+    height: 25px;
+}
